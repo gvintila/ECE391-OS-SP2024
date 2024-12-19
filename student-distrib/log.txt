@@ -1,0 +1,26 @@
+make: Warning: File `Makefile.dep' has modification time 6.9e+03 s in the future
+gcc  -nostdinc -g  -c -o boot.o boot.S
+gcc  -nostdinc -g  -c -o paging_asm.o paging_asm.S
+gcc  -nostdinc -g  -c -o switch.o switch.S
+gcc  -nostdinc -g  -c -o x86_desc.o x86_desc.S
+gcc  -nostdinc -g  -c -o x86_exceptions.o x86_exceptions.S
+gcc  -nostdinc -g  -c -o x86_interrupts.o x86_interrupts.S
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o filesystem.o filesystem.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o i8259.o i8259.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o idt.o idt.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o kboard.o kboard.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o kernel.o kernel.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o lib.o lib.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o paging.o paging.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o pid.o pid.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o pit.o pit.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o rtc.o rtc.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o scheduler.o scheduler.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o syscall.o syscall.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o terminal.o terminal.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o tests.o tests.c
+gcc -Wall -fno-builtin -fno-stack-protector -nostdlib -nostdinc -g  -c -o x86_inter.o x86_inter.c
+rm -f bootimg
+gcc -nostdlib -static boot.o paging_asm.o switch.o x86_desc.o x86_exceptions.o x86_interrupts.o filesystem.o i8259.o idt.o kboard.o kernel.o lib.o paging.o pid.o pit.o rtc.o scheduler.o syscall.o terminal.o tests.o x86_inter.o -Ttext=0x400000 -o bootimg
+sudo ./debug.sh
+make: warning:  Clock skew detected.  Your build may be incomplete.

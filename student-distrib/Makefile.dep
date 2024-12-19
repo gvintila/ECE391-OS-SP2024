@@ -1,0 +1,43 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+paging_asm.o: paging_asm.S paging.h pid.h types.h syscall.h x86_desc.h \
+  idt.h lib.h rtc.h x86_inter.h i8259.h kboard.h scheduler.h filesystem.h
+switch.o: switch.S
+x86_desc.o: x86_desc.S x86_desc.h types.h
+x86_exceptions.o: x86_exceptions.S
+x86_interrupts.o: x86_interrupts.S
+filesystem.o: filesystem.c filesystem.h types.h pid.h paging.h lib.h \
+  scheduler.h syscall.h x86_desc.h idt.h rtc.h x86_inter.h i8259.h \
+  kboard.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h x86_desc.h types.h syscall.h pid.h paging.h lib.h \
+  scheduler.h filesystem.h kboard.h x86_inter.h i8259.h rtc.h
+kboard.o: kboard.c kboard.h x86_inter.h x86_desc.h types.h i8259.h rtc.h \
+  lib.h scheduler.h paging.h pid.h syscall.h idt.h filesystem.h \
+  terminal.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h x86_inter.h i8259.h \
+  kboard.h lib.h scheduler.h paging.h pid.h syscall.h idt.h rtc.h \
+  filesystem.h debug.h tests.h pit.h
+lib.o: lib.c lib.h types.h terminal.h kboard.h x86_inter.h x86_desc.h \
+  i8259.h rtc.h scheduler.h paging.h pid.h syscall.h idt.h filesystem.h
+paging.o: paging.c paging.h pid.h types.h syscall.h x86_desc.h idt.h \
+  lib.h rtc.h x86_inter.h i8259.h kboard.h scheduler.h filesystem.h
+pid.o: pid.c pid.h types.h paging.h lib.h scheduler.h syscall.h \
+  x86_desc.h idt.h rtc.h x86_inter.h i8259.h kboard.h filesystem.h \
+  terminal.h
+pit.o: pit.c pit.h x86_inter.h x86_desc.h types.h i8259.h kboard.h lib.h \
+  scheduler.h paging.h pid.h syscall.h idt.h rtc.h filesystem.h
+rtc.o: rtc.c rtc.h x86_inter.h x86_desc.h types.h i8259.h kboard.h lib.h \
+  scheduler.h paging.h pid.h syscall.h idt.h filesystem.h
+scheduler.o: scheduler.c scheduler.h paging.h pid.h types.h syscall.h \
+  x86_desc.h idt.h lib.h rtc.h x86_inter.h i8259.h kboard.h filesystem.h
+syscall.o: syscall.c syscall.h types.h x86_desc.h idt.h lib.h pid.h \
+  paging.h scheduler.h filesystem.h kboard.h x86_inter.h i8259.h rtc.h
+terminal.o: terminal.c terminal.h types.h kboard.h x86_inter.h x86_desc.h \
+  i8259.h rtc.h lib.h scheduler.h paging.h pid.h syscall.h idt.h \
+  filesystem.h
+tests.o: tests.c tests.h x86_desc.h types.h x86_inter.h i8259.h kboard.h \
+  lib.h scheduler.h paging.h pid.h syscall.h idt.h rtc.h filesystem.h \
+  terminal.h
+x86_inter.o: x86_inter.c x86_inter.h x86_desc.h types.h i8259.h kboard.h \
+  lib.h scheduler.h paging.h pid.h syscall.h idt.h rtc.h filesystem.h \
+  terminal.h

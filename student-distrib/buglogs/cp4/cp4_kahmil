@@ -1,0 +1,3 @@
+File not found error. cat was working for first try but failing 
+on subsequent tries. Found out this was because the buffer was not getting cleared.
+Clearing the buffer in the getargs function solves this problem.
